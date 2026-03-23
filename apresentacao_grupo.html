@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Identidade Visual do Grupo Empresarial</title>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #0f2a54;
+            --navy-mid: #1a3a6b;
+            --navy-light: #1e4380;
+            --blue-accent: #1e5faa;
+            --rule: #2a5298;
+            --white: #ffffff;
+            --off-white: #f0f4fa;
+            --muted: rgba(255,255,255,0.45);
+            --card-bg: rgba(255,255,255,0.05);
+            --card-border: rgba(255,255,255,0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Barlow', sans-serif;
+            background: var(--navy);
+            color: var(--white);
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        /* ─── BACKGROUND ─── */
+        .bg-grid {
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .bg-accent {
+            position: fixed;
+            bottom: -200px;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(30,95,170,0.15) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ─── SLIDES ─── */
+        .presentation {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            z-index: 1;
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px 80px;
+            text-align: center;
+            position: absolute;
+            inset: 0;
+        }
+
+        .slide.active {
+            display: flex;
+            animation: slideIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(24px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ─── TOP RULE ─── */
+        .slide-label {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 36px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--muted);
+        }
+
+        .slide-label::before,
+        .slide-label::after {
+            content: '';
+            display: block;
+            height: 1px;
+            width: 40px;
+            background: var(--muted);
+        }
+
+        /* ─── TYPE SCALE ─── */
+        .display {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 900;
+            font-size: clamp(2.8rem, 6vw, 5rem);
+            line-height: 1;
+            letter-spacing: -0.01em;
+            text-transform: uppercase;
+            color: var(--white);
+        }
+
+        .display span {
+            color: #4a90d9;
+        }
+
+        .section-title {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 800;
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            color: var(--white);
+            margin-bottom: 10px;
+        }
+
+        .proposal-name {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 900;
+            font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--white);
+            margin-bottom: 4px;
+        }
+
+        .body-text {
+            font-family: 'Barlow', sans-serif;
+            font-weight: 300;
+            font-size: 1.05rem;
+            line-height: 1.85;
+            color: rgba(255,255,255,0.7);
+            max-width: 700px;
+        }
+
+        /* ─── DIVIDER ─── */
+        .rule {
+            width: 56px;
+            height: 4px;
+            background: #4a90d9;
+            margin: 20px auto 28px;
+        }
+
+        .rule.left {
+            margin: 18px 0 24px;
+        }
+
+        /* ─── BADGE ─── */
+        .rank-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+            font-size: 0.75rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: #4a90d9;
+            border: 1.5px solid #4a90d9;
+            padding: 7px 16px;
+            margin-bottom: 20px;
+        }
+
+        /* ─── SLIDE 1: COVER ─── */
+        .cover-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .cover-tag {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 28px;
+        }
+
+        .cover-sub {
+            font-family: 'Barlow', sans-serif;
+            font-weight: 400;
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.55);
+            margin-top: 28px;
+        }
+
+        .cover-date {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.3);
+            letter-spacing: 0.1em;
+            margin-top: 56px;
+        }
+
+        /* ─── SLIDE 2: COMPANIES GRID ─── */
+        .companies-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            width: 100%;
+            max-width: 960px;
+            margin: 32px auto;
+        }
+
+        .company-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-top: 3px solid #4a90d9;
+            padding: 28px 24px;
+            text-align: left;
+        }
+
+        .company-icon {
+            width: 36px;
+            height: 36px;
+            background: rgba(74,144,217,0.15);
+            border: 1px solid rgba(74,144,217,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        .company-icon svg {
+            width: 18px;
+            height: 18px;
+            fill: #4a90d9;
+        }
+
+        .company-name {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+            font-size: 1.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--white);
+            margin-bottom: 6px;
+        }
+
+        .company-desc {
+            font-size: 0.85rem;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        .unify-statement {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+            font-size: 1.4rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: rgba(255,255,255,0.5);
+            margin-top: 20px;
+        }
+
+        .unify-statement strong {
+            color: #4a90d9;
+        }
+
+        /* ─── SLIDE 3: MARKET ─── */
+        .market-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            max-width: 960px;
+            width: 100%;
+            margin: 32px auto;
+        }
+
+        .market-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 26px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .market-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #4a90d9, transparent);
+        }
+
+        .market-number {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 900;
+            font-size: 3rem;
+            color: rgba(74,144,217,0.15);
+            line-height: 1;
+            position: absolute;
+            top: 10px;
+            right: 14px;
+        }
+
+        .market-title {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+            font-size: 1.15rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--white);
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .market-sub {
+            font-size: 0.82rem;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        /* ─── PROPOSAL SLIDES ─── */
+        .proposal-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            max-width: 1100px;
+            width: 100%;
+            align-items: center;
+            text-align: left;
+        }
+
+        .logo-frame {
+            background: var(--white);
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            aspect-ratio: 1 / 0.75;
+        }
+
+        .logo-frame img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .proposal-content {}
+
+        .proposal-args {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .proposal-args li {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: rgba(255,255,255,0.75);
+            padding: 10px 0 10px 24px;
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+            position: relative;
+        }
+
+        .proposal-args li:first-child {
+            border-top: 1px solid rgba(255,255,255,0.07);
+        }
+
+        .proposal-args li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 2px;
+            background: #4a90d9;
+        }
+
+        .proposal-args li strong {
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .proposal-quote {
+            background: rgba(74,144,217,0.08);
+            border-left: 3px solid #4a90d9;
+            padding: 14px 18px;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.65;
+            font-style: italic;
+        }
+
+        /* ─── SLIDE 7: RECOMMENDATION ─── */
+        .rec-block {
+            border: 1px solid rgba(74,144,217,0.4);
+            background: rgba(74,144,217,0.06);
+            padding: 36px 48px;
+            max-width: 860px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+            margin: 24px auto;
+        }
+
+        .rec-label {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 600;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #4a90d9;
+            margin-bottom: 10px;
+        }
+
+        .rec-name {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 900;
+            font-size: 2.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--white);
+        }
+
+        .rec-reasons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 960px;
+            width: 100%;
+            margin-top: 28px;
+        }
+
+        .rec-reason {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 22px 20px;
+            text-align: left;
+        }
+
+        .rec-reason-title {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #4a90d9;
+            margin-bottom: 8px;
+        }
+
+        .rec-reason-text {
+            font-size: 0.85rem;
+            color: var(--muted);
+            line-height: 1.55;
+        }
+
+        .alt-row {
+            display: flex;
+            gap: 20px;
+            margin-top: 28px;
+            align-items: center;
+        }
+
+        .alt-label {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            color: var(--muted);
+            white-space: nowrap;
+        }
+
+        .alt-pill {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.12);
+            padding: 6px 18px;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.65);
+        }
+
+        /* ─── SLIDE 8: STEPS ─── */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            max-width: 960px;
+            width: 100%;
+            margin: 28px auto;
+        }
+
+        .step-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 26px 20px;
+            text-align: left;
+            position: relative;
+        }
+
+        .step-num {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 900;
+            font-size: 3.5rem;
+            color: rgba(74,144,217,0.12);
+            line-height: 1;
+            position: absolute;
+            bottom: 12px;
+            right: 16px;
+        }
+
+        .step-title {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+            font-size: 1.05rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--white);
+            margin-bottom: 10px;
+        }
+
+        .step-desc {
+            font-size: 0.83rem;
+            color: var(--muted);
+            line-height: 1.55;
+        }
+
+        .step-bar {
+            width: 24px;
+            height: 3px;
+            background: #4a90d9;
+            margin-bottom: 16px;
+        }
+
+        .timeline-note {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #4a90d9;
+            margin-top: 12px;
+        }
+
+        /* ─── NAVIGATION ─── */
+        .navigation {
+            position: fixed;
+            bottom: 28px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .nav-btn {
+            background: transparent;
+            color: rgba(255,255,255,0.6);
+            border: 1px solid rgba(255,255,255,0.15);
+            padding: 10px 24px;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .nav-btn:hover {
+            background: rgba(255,255,255,0.06);
+            color: var(--white);
+            border-color: rgba(255,255,255,0.3);
+        }
+
+        .slide-counter {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.9rem;
+            color: var(--muted);
+            letter-spacing: 0.08em;
+            min-width: 56px;
+            text-align: center;
+        }
+
+        /* ─── PROGRESS ─── */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 2px;
+            background: #4a90d9;
+            transition: width 0.4s ease;
+            z-index: 100;
+        }
+
+        /* ─── SLIDE INDICATOR DOTS ─── */
+        .dots {
+            position: fixed;
+            right: 28px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 100;
+        }
+
+        .dot {
+            width: 5px;
+            height: 5px;
+            background: rgba(255,255,255,0.2);
+            cursor: pointer;
+            transition: all 0.25s;
+        }
+
+        .dot.active {
+            background: #4a90d9;
+            height: 18px;
+        }
+
+        @media (max-width: 900px) {
+            .proposal-layout { grid-template-columns: 1fr; gap: 28px; }
+            .companies-grid { grid-template-columns: 1fr; }
+            .market-grid { grid-template-columns: repeat(2, 1fr); }
+            .steps-grid { grid-template-columns: repeat(2, 1fr); }
+            .rec-reasons { grid-template-columns: 1fr; }
+            .slide { padding: 40px 30px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="bg-grid"></div>
+<div class="bg-accent"></div>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<div class="dots" id="dots"></div>
+
+<div class="presentation">
+
+    <!-- SLIDE 1: CAPA -->
+    <div class="slide active">
+        <div class="cover-inner">
+            <div class="cover-tag">Proposta de Naming e Branding</div>
+            <div class="display">Identidade Visual<br/><span>do Grupo Empresarial</span></div>
+            <div class="rule"></div>
+            <p class="cover-sub">Apresentação para o CEO</p>
+            <div class="cover-date">Março 2026</div>
+        </div>
+    </div>
+
+    <!-- SLIDE 2: O GRUPO HOJE -->
+    <div class="slide">
+        <div class="slide-label">Contexto</div>
+        <div class="section-title">O Grupo Hoje</div>
+        <div class="rule"></div>
+        <div class="companies-grid">
+            <div class="company-card">
+                <div class="company-icon">
+                    <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59L5.25 14c-.16.28-.25.61-.25.96C5 16.1 5.9 17 7 17h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63H19c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0023.46 4H5.21L4.27 2H1zm16 16c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                </div>
+                <div class="company-name">Tanaporta</div>
+                <div class="company-desc">Hortifruti de qualidade<br/>Brasília, DF</div>
+            </div>
+            <div class="company-card">
+                <div class="company-icon">
+                    <svg viewBox="0 0 24 24"><path d="M4.5 11h-2V9H1v6h1.5v-2.5h2V15H6V9H4.5zm2.5-.5h1.5V15H10V10.5h1.5V9H7zm5.5 0H14V15h1.5v-1.75H17V12h-1.5v-1h2V9h-3.5zm6 0H20V15h1.5V10.5H23V9h-4.5z"/></svg>
+                </div>
+                <div class="company-name">Melhor Amigo Pet</div>
+                <div class="company-desc">Produtos e cuidados<br/>para pets</div>
+            </div>
+            <div class="company-card">
+                <div class="company-icon">
+                    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h16v12zm-10-5h2v2h-2zm-4 0h2v2H6zm8 0h2v2h-2z"/></svg>
+                </div>
+                <div class="company-name">Delivet</div>
+                <div class="company-desc">Distribuidora B2B</div>
+            </div>
+        </div>
+        <div class="unify-statement">Três empresas fortes. Um grupo sem nome. <strong>É hora de unificar a identidade.</strong></div>
+    </div>
+
+    <!-- SLIDE 3: ANÁLISE DE MERCADO -->
+    <div class="slide">
+        <div class="slide-label">Análise de Mercado</div>
+        <div class="section-title">O que os Líderes Fazem</div>
+        <div class="rule"></div>
+        <p class="body-text">Analisamos GPA, Grupo Mateus, Assaí, Petz e Carrefour.<br/>Todos seguem quatro padrões claros — e nossas propostas também.</p>
+        <div class="market-grid">
+            <div class="market-card">
+                <div class="market-number">01</div>
+                <div class="market-title">Tipografia Bold</div>
+                <div class="market-sub">Peso forte e alta legibilidade em qualquer escala</div>
+            </div>
+            <div class="market-card">
+                <div class="market-number">02</div>
+                <div class="market-title">Ícone Simples</div>
+                <div class="market-sub">Geométrico, sem ornamentação excessiva</div>
+            </div>
+            <div class="market-card">
+                <div class="market-number">03</div>
+                <div class="market-title">Atemporal</div>
+                <div class="market-sub">Moderno sem seguir tendências passageiras</div>
+            </div>
+            <div class="market-card">
+                <div class="market-number">04</div>
+                <div class="market-title">Escalável</div>
+                <div class="market-sub">Funciona de outdoor a aplicativo mobile</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 4: GRUPO CANDANGO -->
+    <div class="slide">
+        <div class="proposal-layout">
+            <div class="logo-frame">
+                <img src="candango.png" alt="Grupo Candango">
+            </div>
+            <div class="proposal-content">
+                <div class="rank-badge">Recomendação 01</div>
+                <div class="proposal-name">Grupo Candango</div>
+                <div class="rule left"></div>
+                <ul class="proposal-args">
+                    <li><strong>Identidade única</strong> — Nome memorável que nenhum concorrente possui</li>
+                    <li><strong>Orgulho de Brasília</strong> — Candango é quem construiu a capital</li>
+                    <li><strong>Raiz e modernidade</strong> — Conecta história com visão de futuro</li>
+                    <li><strong>Disponível para registro</strong> — Livre para proteção imediata no INPI</li>
+                </ul>
+                <div class="proposal-quote">
+                    "Candango é força, é raiz, é Brasília. Esse nome posiciona o grupo como patrimônio local com presença nacional."
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 5: GRUPO PROVÊ -->
+    <div class="slide">
+        <div class="proposal-layout">
+            <div class="logo-frame">
+                <img src="prove.png" alt="Grupo Provê">
+            </div>
+            <div class="proposal-content">
+                <div class="rank-badge">Recomendação 02</div>
+                <div class="proposal-name">Grupo Provê</div>
+                <div class="rule left"></div>
+                <ul class="proposal-args">
+                    <li><strong>Conceito profundo</strong> — Quem provê cuida e garante</li>
+                    <li><strong>Conexão de valores</strong> — "Deus provê" ressoa culturalmente</li>
+                    <li><strong>Une os três negócios</strong> — Alimentação, pets e abastecimento</li>
+                    <li><strong>Curto e memorável</strong> — Fácil de pronunciar e lembrar</li>
+                </ul>
+                <div class="proposal-quote">
+                    "Provê é sustento, cuidado, provisão. É o que o grupo faz todos os dias para famílias e empresas."
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 6: GRUPO DA CASA -->
+    <div class="slide">
+        <div class="proposal-layout">
+            <div class="logo-frame">
+                <img src="dacasa.png" alt="Grupo da Casa">
+            </div>
+            <div class="proposal-content">
+                <div class="rank-badge">Recomendação 03</div>
+                <div class="proposal-name">Grupo da Casa</div>
+                <div class="rule left"></div>
+                <ul class="proposal-args">
+                    <li><strong>Proximidade imediata</strong> — Evoca lar, confiança e familiaridade</li>
+                    <li><strong>Simples e afetivo</strong> — Nome que qualquer pessoa memoriza</li>
+                    <li><strong>Conecta com o cliente final</strong> — Varejo e consumidor direto</li>
+                    <li><strong>Visual forte</strong> — Ícone de casa adapta-se a qualquer aplicação</li>
+                </ul>
+                <div class="proposal-quote">
+                    "Da Casa é afeto e pertencimento. É o grupo que abastece a casa das pessoas todos os dias."
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 7: GRUPO FORNECE -->
+    <div class="slide">
+        <div class="proposal-layout">
+            <div class="logo-frame">
+                <img src="fornece.png" alt="Grupo Fornece">
+            </div>
+            <div class="proposal-content">
+                <div class="rank-badge">Recomendação 04</div>
+                <div class="proposal-name">Grupo Fornece</div>
+                <div class="rule left"></div>
+                <ul class="proposal-args">
+                    <li><strong>Direto ao ponto</strong> — Sem rodeios, é exatamente o que faz</li>
+                    <li><strong>Conecta com distribuição</strong> — Core business da operação B2B</li>
+                    <li><strong>Profissional e corporativo</strong> — Sério sem ser frio</li>
+                    <li><strong>Verbo em ação</strong> — Energia constante de movimento</li>
+                </ul>
+                <div class="proposal-quote">
+                    "Fornece é ação pura. É pragmático, confiável, e comunica exatamente o que o grupo faz."
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 8: RECOMENDAÇÃO FINAL -->
+    <div class="slide">
+        <div class="slide-label">Nossa Recomendação</div>
+        <div class="section-title">Primeira Escolha Estratégica</div>
+        <div class="rule"></div>
+        <div class="rec-block">
+            <div class="rec-label">Recomendação Principal</div>
+            <div class="rec-name">Grupo Candango</div>
+        </div>
+        <div class="rec-reasons">
+            <div class="rec-reason">
+                <div class="rec-reason-title">Diferenciação Total</div>
+                <div class="rec-reason-text">Nenhum concorrente pode copiar essa identidade regional. Exclusivo por natureza.</div>
+            </div>
+            <div class="rec-reason">
+                <div class="rec-reason-title">Storytelling Forte</div>
+                <div class="rec-reason-text">Candango carrega história, orgulho e pertencimento — um ativo de marca inestimável.</div>
+            </div>
+            <div class="rec-reason">
+                <div class="rec-reason-title">Expansão Futura</div>
+                <div class="rec-reason-text">Funciona para Brasília hoje. Funciona para o Brasil amanhã. Escala sem perder identidade.</div>
+            </div>
+        </div>
+        <div class="alt-row">
+            <span class="alt-label">Alternativas fortes:</span>
+            <span class="alt-pill">Grupo Provê</span>
+            <span class="alt-pill">Grupo da Casa</span>
+            <span class="alt-pill">Grupo Fornece</span>
+        </div>
+    </div>
+
+    <!-- SLIDE 9: PRÓXIMOS PASSOS -->
+    <div class="slide">
+        <div class="slide-label">Execução</div>
+        <div class="section-title">Próximos Passos</div>
+        <div class="rule"></div>
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-bar"></div>
+                <div class="step-title">Decisão de Nome</div>
+                <div class="step-desc">Escolha entre as quatro propostas apresentadas nesta sessão</div>
+                <div class="step-num">01</div>
+            </div>
+            <div class="step-card">
+                <div class="step-bar"></div>
+                <div class="step-title">Registro de Marca</div>
+                <div class="step-desc">Proteção legal imediata no INPI para todas as classes relevantes</div>
+                <div class="step-num">02</div>
+            </div>
+            <div class="step-card">
+                <div class="step-bar"></div>
+                <div class="step-title">Manual de Identidade</div>
+                <div class="step-desc">Desenvolvimento completo do MIV com normas de uso e aplicação</div>
+                <div class="step-num">03</div>
+            </div>
+            <div class="step-card">
+                <div class="step-bar"></div>
+                <div class="step-title">Implementação</div>
+                <div class="step-desc">Fachadas, materiais impressos, digital, uniformes e sinalização</div>
+                <div class="step-num">04</div>
+            </div>
+        </div>
+        <div class="timeline-note">Prazo estimado: 60 a 90 dias para implementação completa</div>
+    </div>
+
+</div>
+
+<!-- NAVIGATION -->
+<div class="navigation">
+    <button class="nav-btn" onclick="previousSlide()">Anterior</button>
+    <span class="slide-counter"><span id="current">1</span> / <span id="total">9</span></span>
+    <button class="nav-btn" onclick="nextSlide()">Próximo</button>
+</div>
+
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+    document.getElementById('total').textContent = totalSlides;
+
+    // Build dots
+    const dotsContainer = document.getElementById('dots');
+    slides.forEach((_, i) => {
+        const dot = document.createElement('div');
+        dot.className = 'dot' + (i === 0 ? ' active' : '');
+        dot.onclick = () => showSlide(i);
+        dotsContainer.appendChild(dot);
+    });
+
+    function updateUI() {
+        document.getElementById('current').textContent = currentSlide + 1;
+        document.getElementById('progressBar').style.width = ((currentSlide + 1) / totalSlides * 100) + '%';
+        document.querySelectorAll('.dot').forEach((d, i) => {
+            d.classList.toggle('active', i === currentSlide);
+        });
+    }
+
+    function showSlide(n) {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = ((n % totalSlides) + totalSlides) % totalSlides;
+        slides[currentSlide].classList.add('active');
+        updateUI();
+    }
+
+    function nextSlide() { showSlide(currentSlide + 1); }
+    function previousSlide() { showSlide(currentSlide - 1); }
+
+    updateUI();
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); nextSlide(); }
+        else if (e.key === 'ArrowLeft') { e.preventDefault(); previousSlide(); }
+    });
+
+    document.querySelector('.presentation').addEventListener('click', (e) => {
+        const x = e.clientX;
+        const w = window.innerWidth;
+        if (x > w * 0.72) nextSlide();
+        else if (x < w * 0.28) previousSlide();
+    });
+</script>
+</body>
+</html>
